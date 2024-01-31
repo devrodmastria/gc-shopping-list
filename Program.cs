@@ -1,5 +1,5 @@
 ﻿// author: Rod M
-// task: Unit 3 - Lab2 - Shopping List
+// task: Unit 3 - Lab 2 - Shopping List
 
 Console.WriteLine("---- Welcome to Smart Shoppers Market! ----");
 
@@ -21,11 +21,13 @@ var menuValues = new Dictionary<string, decimal>()
 var shoppingList = new List<string>();
 bool continueShopping = true;
 
-Console.WriteLine("Item             Price");
-Console.WriteLine("======================");
+// -15 represents right padding/margin
+Console.WriteLine("{0,-15} {1,0}", "Item", "Price");
+Console.WriteLine("=========================");
 foreach (KeyValuePair<string, decimal> menuItem in menuValues)
 {
-    Console.WriteLine(menuItem.Key + " $" + menuItem.Value);
+    Console.WriteLine("{0,-15} ${1,0}", menuItem.Key, menuItem.Value);
+    //Console.WriteLine(menuItem.Key + " $" + menuItem.Value);
 
 }
 
@@ -67,17 +69,20 @@ while (continueShopping)
 
     if (!continueShopping && shoppingList.Count > 0) // only show totals if cart is not empty
     {
-        Console.WriteLine("======================");
-        Console.WriteLine("====== Your Cart =====");
+        //sample margins
+        //Console.WriteLine("{0,-15} {1,0}", "Item", "Price");
+        //Console.WriteLine("=========================");
+
+        Console.WriteLine("======= Your Cart =======");
         decimal total = 0.0m;
         foreach (string item in shoppingList)
         {
             decimal itemPrice = menuValues[item];
-            Console.WriteLine($"{item} - {itemPrice}");
+            Console.WriteLine("{0, -18} ${1,0}", item, itemPrice);
             total += itemPrice;
         }
-        Console.WriteLine("====== Your Total =====");
-        Console.WriteLine("$" + total);
+        Console.WriteLine("======= Your Total ======");
+        Console.WriteLine("{0,-18} ${1,0}", null, total);
         Console.WriteLine();
         Console.WriteLine("Thanks for shopping with us!");
     }
